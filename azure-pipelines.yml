@@ -18,11 +18,9 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '**/*.json'
     customCommand: 'npm install'
 
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '**/*.json'
     customCommand: 'npm run build'
