@@ -23,3 +23,12 @@ steps:
   inputs:
     command: 'custom'
     customCommand: 'run-script build'
+
+- task: Npm@1
+  inputs:
+    command: 'publish'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
