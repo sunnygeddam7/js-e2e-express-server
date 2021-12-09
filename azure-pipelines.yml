@@ -27,6 +27,8 @@ steps:
 - task: Npm@1
   inputs:
     command: 'publish'
+    publishRegistry: 'useFeed'
+    publishFeed: '7ffaaef6-83af-4d9f-b852-0e1527bf1cce/3d45c69d-71b6-4794-8d99-cc5feeb7dfcc'
 
 - task: PublishBuildArtifacts@1
   inputs:
