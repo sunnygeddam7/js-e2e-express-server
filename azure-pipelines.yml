@@ -24,14 +24,15 @@ steps:
     command: 'custom'
     customCommand: 'run-script build'
 
-- task: Npm@1
+- task: ArchiveFiles@2
   inputs:
-    command: 'publish'
-    publishRegistry: 'useFeed'
-    publishFeed: '7ffaaef6-83af-4d9f-b852-0e1527bf1cce/3d45c69d-71b6-4794-8d99-cc5feeb7dfcc'
+    rootFolderOrFile: './'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 
-- task: PublishBuildArtifacts@1
+- task: PublishPipelineArtifact@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
