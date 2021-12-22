@@ -1,4 +1,4 @@
-// add unique timestamp to filename
+
 const timeStamp = () => {
   const date = new Date();
   return date.getTime();
