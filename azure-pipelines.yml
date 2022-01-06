@@ -6,7 +6,8 @@
 trigger:
 - main
 
-pool: selfhosted
+pool:
+  vmImage: 'ubuntu-latest'
   
 
 steps:
@@ -19,10 +20,19 @@ steps:
   inputs:
     command: 'install'
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonar'
+    organization: 'dotnet7'
+    scannerMode: 'CLI'
+    configMode: 'file'
+
 - task: Npm@1
   inputs:
     command: 'custom'
     customCommand: 'run-script build'
+
+- task: SonarCloudAnalyze@1
 
 - task: ArchiveFiles@2
   inputs:
